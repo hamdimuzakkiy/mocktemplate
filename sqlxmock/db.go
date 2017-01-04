@@ -32,3 +32,9 @@ func (db DBTemplate) Get(dest interface{}, query string, param ...interface{}) e
 
 	return argsMock.Error(0)
 }
+
+func (db DBTemplate) Beginx() (*sqlx.Tx, error) {
+	argsMock := db.Called()
+
+	return argsMock.Get(0).(*sqlx.Tx), argsMock.Error(1)
+}
