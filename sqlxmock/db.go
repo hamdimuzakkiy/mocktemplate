@@ -38,3 +38,9 @@ func (db DBTemplate) Beginx() (*sqlx.Tx, error) {
 
 	return argsMock.Get(0).(*sqlx.Tx), argsMock.Error(1)
 }
+
+func (db DBTemplate) Select(dest interface{}, query string, args ...interface{}) error {
+	argsMock := db.Called()
+
+	return argsMock.Error(0)
+}
